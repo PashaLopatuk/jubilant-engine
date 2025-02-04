@@ -6,9 +6,9 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-      - name: Pull latest version and restart Docker
-        run: |
-          cd ~/blog/front/jubilant-engine
-          git pull
-          git switch main
-          docker compose up -d --build
+#      - name: Pull latest version and restart Docker
+      - uses: actions/checkout@v4
+      - uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-files: './docker-compose.yaml'
+          up-flags: "-d --build"
