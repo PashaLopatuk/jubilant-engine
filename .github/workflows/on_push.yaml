@@ -6,11 +6,13 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-#      - name: Pull latest version and restart Docker
-      - run: |
-          cd ~/blog/front/jubilant-engine
       - uses: actions/checkout@v4
+
+      - name: Set working directory
+        run: cd ~/blog/front/jubilant-engine
+
       - uses: hoverkraft-tech/compose-action@v2.0.1
         with:
-          compose-files: './docker-compose.yaml'
+          compose-file: './docker-compose.yml'  # 🔹 Виправлено compose-files -> compose-file
           up-flags: "-d --build"
+          cwd: "~/blog/front/jubilant-engine"  # 🔹 Додано правильний каталог
