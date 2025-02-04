@@ -1,0 +1,14 @@
+name: Deploy front on Amazon First-Server
+on:
+  push:
+    branches: [master]
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Pull latest version and restart Docker
+        run: |
+          cd ~/blog/front
+          git pull
+          git switch main
+          docker compose up -d --build
