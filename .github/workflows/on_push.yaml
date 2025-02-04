@@ -7,6 +7,8 @@ jobs:
     runs-on: self-hosted
     steps:
 #      - name: Pull latest version and restart Docker
+      - run: |
+          cd ~/blog/front/jubilant-engine
       - uses: actions/checkout@v4
       - uses: hoverkraft-tech/compose-action@v2.0.1
         with:
