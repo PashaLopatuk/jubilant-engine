@@ -6,13 +6,12 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-      - run: cd ~/blog/front/jubilant-engine
-      - run: git switch master
-      - run: git pull
-      - run: docker-compose up -d --build
+      - name: Start Docker if not running
+        run: sudo systemctl start docker || true
 
-#      - uses: hoverkraft-tech/compose-action@v2.0.1
-#        with:
-#          compose-file: './docker-compose.yaml'
-#          up-flags: "-d --build"
-#          cwd: "~/blog/front/jubilant-engine"
+      - name: Pull latest changes and restart Docker
+        run: |
+          cd ~/blog/front/jubilant-engine
+          git switch master
+          git pull
+          docker-compose up -d --build
