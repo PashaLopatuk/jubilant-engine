@@ -9,7 +9,7 @@ jobs:
       - run: cd ~/blog/front/jubilant-engine
       - run: git switch master
       - run: git pull
-      - run: docker compose up -d --build
+      - run: docker-compose up -d --build
 
 #      - uses: hoverkraft-tech/compose-action@v2.0.1
 #        with:
