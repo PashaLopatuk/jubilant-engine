@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Pull latest version and restart Docker
         run: |
-          cd ~/blog/front
+          cd ~/blog/front/jubilant-engine
           git pull
           git switch main
           docker compose up -d --build
